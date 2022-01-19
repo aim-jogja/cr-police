@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cr_police/main.dart';
 import 'package:cr_police/network/api.dart';
+import 'package:cr_police/forum.dart';
+import 'package:cr_police/report.dart';
 import 'dart:convert';
 
 class Welcome extends StatefulWidget {
@@ -50,7 +52,7 @@ class _WelcomeState extends State<Welcome> {
                     child: Row(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.fromLTRB(50.0, 8.0, 0, 8.0),
                           child: Text(
                             "Welcome, Police",
                             style: const TextStyle(fontSize: 29),
@@ -59,9 +61,12 @@ class _WelcomeState extends State<Welcome> {
                         SizedBox(
                           width: 15,
                         ),
-                        GestureDetector(
-                          child: Image.asset('assets/bel.png'),
-                          onTap: () {},
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: GestureDetector(
+                            child: Image.asset('assets/bel.png'),
+                            onTap: () {},
+                          ),
                         ),
                         SizedBox(
                           width: 10,
@@ -74,39 +79,55 @@ class _WelcomeState extends State<Welcome> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
+                    padding: EdgeInsets.fromLTRB(30, 50.0, 0, 0),
                     child: GestureDetector(
                       child: Image.asset(
                         'assets/news.png',
-                        width: 320,
+                        width: 350,
                       ),
                       onTap: () {},
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
+                    padding: EdgeInsets.fromLTRB(30, 50.0, 0, 0),
                     child: GestureDetector(
                       child: Image.asset(
                         'assets/map.png',
-                        width: 320,
+                        width: 350,
                       ),
                       onTap: () {},
                     ),
                   ),
                   Padding(
-                      padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
+                      padding: EdgeInsets.fromLTRB(30, 30, 0, 0),
                       child: Row(
                         children: <Widget>[
-                          Image.asset(
-                            'assets/forum.png',
-                            width: 85,
+                          GestureDetector(
+                            child: Image.asset(
+                              'assets/forum.png',
+                              width: 150,
+                            ),
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  new MaterialPageRoute(
+                                      builder: (context) => ForumPage()));
+                            },
                           ),
                           SizedBox(
-                            width: 75,
+                            width: 40,
                           ),
-                          Image.asset(
-                            'assets/report.png',
-                            width: 85,
+                          GestureDetector(
+                            child: Image.asset(
+                              'assets/report.png',
+                              width: 150,
+                            ),
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  new MaterialPageRoute(
+                                      builder: (context) => ReportPage()));
+                            },
                           ),
                         ],
                       ))

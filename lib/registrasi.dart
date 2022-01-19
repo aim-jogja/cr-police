@@ -49,12 +49,11 @@ class _RegistrasiState extends State<Registrasi> {
       if (localStorage.getString('token') != null) {
         await localStorage.clear();
       }
-      localStorage.setString('token', body['token']);
-      localStorage.setInt('PoliceID', body['PoliceID']);
-      localStorage.setString('policename', body['policename']);
+      //localStorage.setString('token', body['token']);
       Navigator.push(
           context, new MaterialPageRoute(builder: (context) => LoginPage()));
     } else {
+      print(body['message']);
       _showMsg(body['message']);
     }
   }
