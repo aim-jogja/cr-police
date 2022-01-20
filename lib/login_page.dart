@@ -71,6 +71,9 @@ class _LoginPageState extends State<LoginPage> {
       ),
       child: Column(
         children: <Widget>[
+          SizedBox(
+            height: 65.0,
+          ),
           Hero(
             tag: "Logo",
             child: Image.asset('assets/logo.png'),

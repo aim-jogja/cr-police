@@ -3,6 +3,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:cr_police/login_page.dart';
 import 'package:cr_police/network/api.dart';
+import 'package:select_form_field/select_form_field.dart';
+import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 
 class Registrasi extends StatefulWidget {
   const Registrasi({Key? key}) : super(key: key);
@@ -17,6 +19,18 @@ class _RegistrasiState extends State<Registrasi> {
   TextEditingController nameController = TextEditingController();
   TextEditingController pcodeController = TextEditingController();
 
+  final List<Map<String, dynamic>> _items = [
+    {
+      'value': 'pria',
+      'label': 'Pria',
+      'icon': Icon(Icons.male_rounded),
+    },
+    {
+      'value': 'wanita',
+      'label': 'Wanita',
+      'icon': Icon(Icons.female_rounded),
+    },
+  ];
   _showMsg(msg) {
     //
     final snackBar = SnackBar(
@@ -77,7 +91,10 @@ class _RegistrasiState extends State<Registrasi> {
         children: <Widget>[
           Hero(
             tag: "Logo",
-            child: Image.asset('assets/logo.png'),
+            child: Image.asset(
+              'assets/logo.png',
+              width: 90.0,
+            ),
           ),
           SizedBox(
             height: 21.0,
@@ -88,9 +105,16 @@ class _RegistrasiState extends State<Registrasi> {
             controller: nameController,
             decoration: InputDecoration(
               hintText: 'Name',
+              hintStyle: TextStyle(color: Colors.white),
               contentPadding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(15.0)),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.white,
+                  width: 2.0,
+                ),
+              ),
             ),
           ),
           const SizedBox(
@@ -102,9 +126,16 @@ class _RegistrasiState extends State<Registrasi> {
             controller: emailController,
             decoration: InputDecoration(
               hintText: 'Email',
+              hintStyle: TextStyle(color: Colors.white),
               contentPadding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(15.0)),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.white,
+                  width: 2.0,
+                ),
+              ),
             ),
           ),
           SizedBox(
@@ -116,9 +147,16 @@ class _RegistrasiState extends State<Registrasi> {
             controller: pcodeController,
             decoration: InputDecoration(
               hintText: 'Police Code',
+              hintStyle: TextStyle(color: Colors.white),
               contentPadding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(15.0)),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.white,
+                  width: 2.0,
+                ),
+              ),
             ),
           ),
           const SizedBox(
@@ -131,9 +169,58 @@ class _RegistrasiState extends State<Registrasi> {
             controller: passController,
             decoration: InputDecoration(
               hintText: 'Password',
+              hintStyle: TextStyle(color: Colors.white),
               contentPadding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(15.0)),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.white,
+                  width: 2.0,
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          SelectFormField(
+            type: SelectFormFieldType.dropdown,
+            items: _items,
+            decoration: InputDecoration(
+              hintText: 'Gender',
+              hintStyle: TextStyle(color: Colors.white),
+              contentPadding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(15.0)),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.white,
+                  width: 2.0,
+                ),
+              ),
+            ),
+            onChanged: (val) => print(val),
+            onSaved: (val) => print(val),
+          ),
+          SizedBox(
+            height: 10.0,
+          ),
+          TextFormField(
+            keyboardType: TextInputType.phone,
+            autofocus: false,
+            decoration: InputDecoration(
+              hintText: 'Phone Number',
+              hintStyle: TextStyle(color: Colors.white),
+              contentPadding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(15.0)),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.white,
+                  width: 2.0,
+                ),
+              ),
             ),
           ),
           const SizedBox(
